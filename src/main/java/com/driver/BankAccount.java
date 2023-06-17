@@ -19,8 +19,34 @@ this.minBalance=minBalance;
         //Each digit of an account number can lie between 0 and 9 (both inclusive)
         //Generate account number having given number of 'digits' such that the sum of digits is equal to 'sum'
         //If it is not possible, throw "Account Number can not be generated" exception
+        int sumOfDigit = 0;
 
-        return null;
+
+        while (digits > 0)
+        {
+
+            // Stores the last digit if N
+            int rem;
+            rem = digits % 10;
+
+            // Increment the value of
+            // sumOfDigits
+            sumOfDigit += rem;
+
+            // Update the prodOfDigit
+
+
+            // Divide N by 10
+            digits /= 10;
+        }
+        String s=Integer.toString(digits);
+        if(sumOfDigit==sum){
+            return s;
+        }
+        else{
+            throw new Exception("Account Number can not be generated");
+        }
+
     }
 
     public void deposit(double amount) {
