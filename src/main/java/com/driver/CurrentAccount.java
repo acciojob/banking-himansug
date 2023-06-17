@@ -29,4 +29,11 @@ for(int i=0;i<n;i++){
 }
     }
 
+    public String getTradeLicenseId() {
+        return tradeLicenseId;
+    }
+
+    public void setTradeLicenseId(String tradeLicenseId) {
+        this.tradeLicenseId = tradeLicenseId;
+    }
 }
