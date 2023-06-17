@@ -16,32 +16,38 @@ this.rate=rate;
         // Might throw the following errors:
         // 1. "Maximum Withdraw Limit Exceed" : If the amount exceeds maximum withdrawal limit
         // 2. "Insufficient Balance" : If the amount exceeds balance
-if(amount>maxWithdrawalLimit){
-    throw new Exception("Maximum Withdraw Limit Exceed");
-}
-if(amount> this.getBalance()){
-    throw new Exception("Insufficient Balance");
-}
-this.setBalance(getBalance()-amount);
+        if(amount <= maxWithdrawalLimit) {
+            super.withdraw(amount);
+        }
+        else {
+            throw new Exception("Maximum Withdraw Limit Exceeded");
+        }
+
     }
 
     public double getSimpleInterest(int years){
         // Return the final amount considering that bank gives simple interest on current amount
-        double p=this.getBalance();
-        double r=this.getRate();
-        int t=years;
-        double SI = (p * t * r) / 100;
-       return p+SI;
+//        double p=this.getBalance();
+//        double r=this.getRate();
+//        int t=years;
+//        double SI = (p * t * r) / 100;
+//       return p+SI;
+
+        double simpleInterest = getBalance() * (1+(rate * years)/100);
+        return simpleInterest;
     }
 
     public double getCompoundInterest(int times, int years){
         // Return the final amount considering that bank gives compound interest on current amount given times per year
-        double principal = this.getBalance(), rate = this.getRate(), time = years;
-
-        /* Calculate compound interest */
-        double A = principal *
-                (Math.pow((1 + rate / 100), time));
-        return A;
+//        double principal = this.getBalance(), rate = this.getRate(), time = years;
+//
+//        /* Calculate compound interest */
+//        double A = principal *
+//                (Math.pow((1 + rate / 100), time));
+//        return A;
+        double compoundInterest = getBalance() * Math.pow((1 + rate / (100*times)), times * years);
+        //  return compoundInterest;
+        return compoundInterest;
 
 
     }
